@@ -2,12 +2,13 @@ const dummy = (blogs) => {
   return 1
 }
 
-const totalLikes = (blogs) => {
-  const likesReduced = blogs.reduce((acc, cur) => {
-    return acc + cur.likes
-  }, 0)
+const totalLikes = (array) => {
+  let likes = 0
+  for (let blog of array) {
+    likes = likes + blog.likes
+  }
 
-  return blogs.length === 0 ? 0 : likesReduced
+  return array.length === 0 ? 0 : likes
 }
 
 module.exports = {

@@ -2,7 +2,16 @@ const { test, describe } = require('node:test')
 const assert = require('node:assert')
 const listHelper = require('../utils/list_helper')
 
+test('dummy returns one', () => {
+  const blogs = []
+
+  const result = listHelper.dummy(blogs)
+  assert.strictEqual(result, 1)
+})
+
 describe('total likes', () => {
+  const emptyList = []
+
   const listWithOneBlog = [
     {
       _id: '5a422aa71b54a676234d17f8',
@@ -14,7 +23,7 @@ describe('total likes', () => {
     },
   ]
 
-  const blogs = [
+  const listWithMultipleblogs = [
     {
       _id: '5a422a851b54a676234d17f7',
       title: 'React patterns',
@@ -64,11 +73,8 @@ describe('total likes', () => {
       __v: 0,
     },
   ]
-
-  const emptyArray = []
-
-  test('of empty list is 0', () => {
-    const result = listHelper.totalLikes(emptyArray)
+  test('of empty list is zero', () => {
+    const result = listHelper.totalLikes(emptyList)
     assert.strictEqual(result, 0)
   })
 
@@ -78,7 +84,7 @@ describe('total likes', () => {
   })
 
   test('of a bigger list is calculated right', () => {
-    const result = listHelper.totalLikes(blogs)
+    const result = listHelper.totalLikes(listWithMultipleblogs)
     assert.strictEqual(result, 36)
   })
 })
